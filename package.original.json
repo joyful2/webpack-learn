@@ -1,0 +1,28 @@
+{
+  "name": "webpack-learn",
+  "version": "1.0.0",
+  "description": "webpack学习",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "proBuild": "webpack --config webpack.production.config.js",
+    "devBuild": "webpack --config webpack.development.config.js"
+  },
+  "author": "joe",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/core": "^7.22.9",
+    "@babel/plugin-transform-runtime": "^7.22.9",
+    "@babel/preset-env": "^7.22.9",
+    "@babel/runtime": "^7.22.6",
+    "@webpack-cli/generators": "^3.0.7",
+    "babel-loader": "^9.1.3",
+    "ts-loader": "^9.4.4",
+    "typescript": "^5.1.6",
+    "webpack": "^5.88.2",
+    "webpack-cli": "^5.1.4"
+  },
+  "dependencies": {
+    "@webpack-cli/generators": "^3.0.7"
+  }
+}
