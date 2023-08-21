@@ -5,7 +5,8 @@ module.exports = {
   mode: 'production',
   entry:{
     app:"./app.js",
-    app2:"./app2.js",
+    // app:"./app.js",
+    // app2:"./app2.js",
     // appName:['./app.js','babel-polyfill']
   },
   // entry:['app.js','babel-polyfill'],
