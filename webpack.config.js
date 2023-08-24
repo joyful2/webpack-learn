@@ -9,6 +9,10 @@ module.exports = {
     // app2:"./app2.js",
     // appName:['./app.js','babel-polyfill']
   },
+
+  devServer:{
+    port:9003
+  },
   // entry:['app.js','babel-polyfill'],
   output:{
     // path:
