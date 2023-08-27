@@ -3,7 +3,7 @@
 
 const webpack = require('webpack')
 var htmlWebpackPlugin = require('html-webpack-plugin')
-console.log('webpack.HotModuleReplacementPlugin:',webpack.HotModuleReplacementPlugin);
+// console.log('webpack.HotModuleReplacementPlugin:',webpack.HotModuleReplacementPlugin);
 module.exports = {
   mode: 'development',
   devtool:'cheap-module-source-map',
@@ -26,13 +26,12 @@ module.exports = {
     },
     // inline:false,
     // overlay:true
+
     
-    // todo 为何热更新无效？
+    // 1 热更新只对css和js有效，html文件的改动无效 2 默认是liveReload
     hot:true,
-    // hot:'only',
-    // todo liveReload 刷新丢失状态了解
+    hot:'only',// 不liveReload ,不刷新页面,保留状态
     // liveReload: false,
-    // hotOnly:true,
     proxy:{
       '/category':{
         // 对于 包含 '/category' 的请求路径， 都给转发到 https://study.163.com  的域名去 , 然后把实际的请求url拼接在该指定target的后面
@@ -43,7 +42,7 @@ module.exports = {
     }
   },
   plugins:[
-    new webpack.HotModuleReplacementPlugin(),
+    // new webpack.HotModuleReplacementPlugin(),
     // new webpack.NamedModulesPlugin(),
     new htmlWebpackPlugin({
       filename:'index.html', //打包后的文件名

@@ -18,6 +18,14 @@ async function a(){}
 new Promise(()=>{
 
 })
-
 console.log('process.env.NODE_ENV:',process.env.NODE_ENV);
+let i = 0;
+setInterval(()=>{
+  i++
+document.querySelector('#div1').innerHTML = i+'?'
+},1000) 
 
+// hot:'only' 配置情况下,必须要如下代码，才能支持js的热更新，而且是 只热更新，不liveReload.    
+if(module.hot){
+  module.hot.accept()
+}
