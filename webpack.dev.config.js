@@ -6,7 +6,8 @@ var htmlWebpackPlugin = require('html-webpack-plugin')
 // console.log('webpack.HotModuleReplacementPlugin:',webpack.HotModuleReplacementPlugin);
 module.exports = {
   mode: 'development',
-  devtool:'cheap-module-source-map',
+  // devtool:'cheap-module-source-map',
+  devtool:'eval',
   devServer:{
     port:9001,
     // historyApiFallback:true

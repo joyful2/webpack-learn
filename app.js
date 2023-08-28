@@ -20,6 +20,7 @@ new Promise(()=>{
 })
 console.log('process.env.NODE_ENV:',process.env.NODE_ENV);
 let i = 0;
+console.log('wtf.a:',wtf.a);
 setInterval(()=>{
   i++
 document.querySelector('#div1').innerHTML = i+'?'
