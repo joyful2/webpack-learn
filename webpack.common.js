@@ -85,6 +85,11 @@ module.exports = (env)=>{
               loader:'less-loader'
             }
           ]
+        },
+        {
+          // 自定义loader
+          test:/\.wy$/,
+          use:'./my-loader'
         }
         
       ]
