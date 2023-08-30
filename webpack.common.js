@@ -3,13 +3,13 @@ const dev = require('./webpack.dev.config.js')
 const pro = require('./webpack.pro.config.js')
 const {merge} = require('webpack-merge')
 
-console.log('merge:',merge);
+// console.log('merge:',merge);
 
 module.exports = (env)=>{
   console.log('env:',env,env.pro);
   let postPlugins = ['autoprefixer']
   postPlugins = postPlugins.concat( env.pro ? ['postcss-sprite'] : []) 
-  console.log('postPlugins:',postPlugins);
+  // console.log('postPlugins:',postPlugins);
 
   const common = {
     entry:{

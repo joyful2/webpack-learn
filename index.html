@@ -3,28 +3,28 @@
     <head>
         <meta charset="utf-8" />
         <title>Webpack App</title>
-        <link rel="stylesheet" href="./dist/app.min.css">
+        <!-- <link rel="stylesheet" href="./dist/app.min.css"> -->
     </head>
     <body>
-        <h1>Hello world!</h1>
+        <h1>Hello world!!!</h1>
         <div id="div1">div1</div>
         <h2 class="colorblue">Tip: Check your console</h2>
     </body>
     <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="./dist/boundle.js"></script>
+    <!-- <script src="./dist/boundle.js"></script> -->
     <script>
-        if ("serviceWorker" in navigator) {
-            window.addEventListener("load", () => {
-                navigator.serviceWorker
-                    .register("service-worker.js")
-                    .then((registration) => {
-                        console.log("Service Worker registered: ", registration);
-                    })
-                    .catch((registrationError) => {
-                        console.error("Service Worker registration failed: ", registrationError);
-                    });
-            });
-        }
+        // if ("serviceWorker" in navigator) {
+        //     window.addEventListener("load", () => {
+        //         navigator.serviceWorker
+        //             .register("service-worker.js")
+        //             .then((registration) => {
+        //                 console.log("Service Worker registered: ", registration);
+        //             })
+        //             .catch((registrationError) => {
+        //                 console.error("Service Worker registration failed: ", registrationError);
+        //             });
+        //     });
+        // }
      
 
     $(document).ready(function(){

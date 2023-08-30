@@ -1,6 +1,8 @@
 
 // import 'babel-polyfill'
 
+// todo 为什么 我走 npm run startMyDevServer 执行的代码，没有走本文件？
+
 import './test.ts'
 // import test from './test.css'
 // import test2 from'./test2.css'
@@ -15,13 +17,13 @@ setTimeout(()=>{
 )
 
 async function a(){}
-
+alert('11  22')
 new Promise(()=>{
 
 })
 console.log('process.env.NODE_ENV:',process.env.NODE_ENV);
 let i = 0;
-console.log('wtf.a:',wtf.a);
+// console.log('wtf.a:',wtf.a);
 setInterval(()=>{
   i++
 document.querySelector('#div1').innerHTML = i+'?'

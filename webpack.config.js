@@ -2,7 +2,7 @@ require('babel-loader')
 var htmlWebpackPlugin = require('html-webpack-plugin')
 // var extractTextCss = require('extract-text-webpack-plugin')
 module.exports = {
-  mode: 'production',
+  mode: 'development',
   entry:{
     app:"./app.js",
     // app:"./app.js",
