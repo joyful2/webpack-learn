@@ -17,7 +17,7 @@ setTimeout(()=>{
 )
 
 async function a(){}
-alert('11  22')
+// alert('11  22')
 new Promise(()=>{
 
 })

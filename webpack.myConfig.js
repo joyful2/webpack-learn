@@ -8,7 +8,7 @@ let postPlugins = ['autoprefixer']
 module.exports = {
   mode: 'development',
   entry:{
-    app:"./app.js",
+    app:"./src/app.js",
   },
   output:{
     filename:'boundle.js'
@@ -33,8 +33,6 @@ module.exports = {
     },
     // inline:false,
     // overlay:true
-
-    
     // 1 热更新只对css和js有效，html文件的改动无效 2 默认是liveReload
     // hot:true,
     hot:'only',// 不liveReload ,不刷新页面,保留状态
@@ -55,17 +53,6 @@ module.exports = {
         exclude: /(node_modules|bower_components)/,
         use:{
           loader:'babel-loader',
-          // options:{
-          //   cacheDirectory:false,
-          //   plugins: ['@babel/plugin-transform-runtime'],
-          //   presets:[
-          //     ['@babel/preset-env',{
-          //       targets:{
-          //         browsers:['>0.000000001%']
-          //       }
-          //     }]
-          //   ]
-          // }
         }
       },
       {
@@ -73,21 +60,14 @@ module.exports = {
         use:'ts-loader'
       },
       {
-        // test:/\.css$/,
         test:/\.less$/,
         use:[
           {
             loader:'style-loader',
-            // options:{
-            //   insertInto:'#mydiv',
-            //   singleton:true,
-            //   transform:'./transform.js'
-            // }
           },
           {
             loader:'css-loader',
             options:{
-              // modules:true
               modules:{
                 localIdentName:'[path][name]_[local]_[hash:4]' // 注意webpack 3 版本的写法是放modules 外面的
               }
@@ -96,19 +76,9 @@ module.exports = {
           {
             loader:'postcss-loader',
             options:{
-              // ident:'postcss',
               postcssOptions: {
                 plugins: postPlugins
               },
-              // plugins:[
-              //   require('autoprefixer')(
-              //     {
-              //     'overrideBrowserslist':[
-              //       ">1%",'last 2 versions'
-              //     ]
-              //   }
-              //   )
-              // ]
             }
           },
           {
@@ -127,7 +97,7 @@ module.exports = {
   plugins:[
   new htmlWebpackPlugin({
     filename:'index.html', //打包后的文件名
-    template:'./index.html', //打包html所基于的模板
+    template:'./src/index.html', //打包html所基于的模板
     minify:{
       // 压缩的在其内部是基于第三方工具实现的
       collapseWhiteSpace:true

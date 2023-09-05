@@ -13,7 +13,8 @@ module.exports = (env)=>{
 
   const common = {
     entry:{
-      app:"./app.js",
+      app:"./src/app.js",
+      // publicPath:'./test' // todo 作用是会给html中所有引入的路径加上这个路径前缀？
     },
     output:{
       filename:'boundle.js'
@@ -90,6 +91,28 @@ module.exports = (env)=>{
           // 自定义loader
           test:/\.wy$/,
           use:'./my-loader'
+        },
+        {
+          // todo 为什么图片资源都没被打包？？
+          test:'/\.(jpg|png|gif|jgeg)$/',
+          // use:'file-loader',
+          use:[
+            {
+            // loader: 'file-loader',
+            loader: 'url-loader', // 支持图片的引入
+            options:{
+              name:'[name].[hash:4].[ext]',
+              outputPath:'assets/img',
+              publicPath:'assets/img',
+              limit:5000 // 小于limit值的图片被转未base64格式。 用于减少请求数，设置合适大小，太大会让css文件过大，请求很慢，太小，图片不能有效转为base64,减少请求数。一般设置5000b,依据实际情况来 
+            }
+          },
+          {
+            loader:'img-loader', // 图片的压缩等
+            
+
+          }
+        ]
         }
         
       ]

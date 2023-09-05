@@ -10,8 +10,8 @@ console.log('config:',config);
 
 // todo 为何热更新无效？？
 Object.keys(config.entry).forEach((name)=>{
-  // config.entry[name] = ['webpack-hot-middleware/client?noInfo=true&reload=true'].concat(config.entry[name])
-  config.entry[name] = ['webpack-hot-middleware/client?noInfo=true&reload=true',config.entry[name]]
+  config.entry[name] = ['webpack-hot-middleware/client?noInfo=true&reload=true'].concat(config.entry[name])
+  // config.entry[name] = ['webpack-hot-middleware/client?noInfo=true&reload=true',config.entry[name]]
 })
 const compiler = webpack(config)
 // console.log('config:',config);

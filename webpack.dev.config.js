@@ -47,7 +47,7 @@ module.exports = {
     // new webpack.NamedModulesPlugin(),
     new htmlWebpackPlugin({
       filename:'index.html', //打包后的文件名
-      template:'./index.html', //打包html所基于的模板
+      template:'./src/index.html', //打包html所基于的模板
       minify:{
         // 压缩的在其内部是基于第三方工具实现的
         collapseWhiteSpace:true

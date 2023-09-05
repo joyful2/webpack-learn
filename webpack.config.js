@@ -2,12 +2,12 @@ require('babel-loader')
 var htmlWebpackPlugin = require('html-webpack-plugin')
 // var extractTextCss = require('extract-text-webpack-plugin')
 module.exports = {
-  mode: 'development',
+  mode: 'production',
   entry:{
-    app:"./app.js",
-    // app:"./app.js",
-    // app2:"./app2.js",
-    // appName:['./app.js','babel-polyfill']
+    app:"./src/app.js",
+    // app:"./src/app.js",
+    // app2:"./src/app2.js",
+    // appName:['./src/app.js','babel-polyfill']
   },
 
   devServer:{
@@ -143,7 +143,7 @@ module.exports = {
     // })
     new htmlWebpackPlugin({
       filename:'index.html', //打包后的文件名
-      template:'./index.html', //打包html所基于的模板
+      template:'./src/index.html', //打包html所基于的模板
       minify:{
         // 压缩的在其内部是基于第三方工具实现的
         collapseWhiteSpace:true // todo 没生效！

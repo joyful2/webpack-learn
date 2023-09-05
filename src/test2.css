@@ -16,3 +16,16 @@ body {
 /* .colorblue {
   color:blue
 } */
+
+:global .img1 {
+  height: 100px;
+  background: url('./src/assets/a.webp.png');
+}
+.img2 {
+    height: 100px;
+  background: url('./src/assets/b.jpg');
+}
+.img3 {
+    height: 100px;
+  background: url('./src/assets/c.jpg');
+}
