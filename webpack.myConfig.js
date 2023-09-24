@@ -95,14 +95,14 @@ module.exports = {
     ]
   },
   plugins:[
-  new htmlWebpackPlugin({
-    filename:'index.html', //打包后的文件名
-    template:'./src/index.html', //打包html所基于的模板
-    minify:{
-      // 压缩的在其内部是基于第三方工具实现的
-      collapseWhiteSpace:true
-    },
-    inject:true, //打包后的css，js是否自动引入
-  })
+    new htmlWebpackPlugin({
+      filename:'index.html', //打包后的文件名
+      template:'./src/index.html', //打包html所基于的模板
+      minify:{
+        // 压缩的在其内部是基于第三方工具实现的
+        collapseWhiteSpace:true
+      },
+      inject:true, //打包后的css，js是否自动引入
+    })
   ],
 }
