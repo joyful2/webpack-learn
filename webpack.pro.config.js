@@ -5,7 +5,7 @@ const htmlWebpackPlugin = require('html-webpack-plugin')
 
 
 module.exports = {
-  mode: 'production',
+  mode: 'production', // webpack4 默认了很多配置，减少了配置文件书写。比如代码压缩，tree-shaking等
   optimization:{
     minimize:false
   }, 

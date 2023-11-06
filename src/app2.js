@@ -6,6 +6,9 @@ import './test.ts'
 // import test2 from'./test2.css'
 import test from './test.less'
 import test2 from'./test2.less'
+import 'loadsh'
+import './moduleA.js'
+
 document.querySelector('#div1').setAttribute('class',test2.div1)
 
 setTimeout(()=>{

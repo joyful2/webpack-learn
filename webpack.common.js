@@ -1,10 +1,11 @@
 const path = require('path')
 const webpackSpriteSmith = require('webpack-spritesmith')
 var extractTextCss = require('extract-text-webpack-plugin')
+var {CleanWebpackPlugin} = require('clean-webpack-plugin')
 const dev = require('./webpack.dev.config.js')
 const pro = require('./webpack.pro.config.js')
 const {merge} = require('webpack-merge')
-
+const webpack = require('webpack')
 // console.log('merge:',merge);
 
 module.exports = (env)=>{
@@ -15,13 +16,47 @@ module.exports = (env)=>{
 
   const common = {
     entry:{
+      // todo 配置多文件页面 第三方依赖，公共模块，webpack配置文件分别单独一个文件。 支持公共模块单独一个文件
       app:"./src/app.js",
+      app2:"./src/app2.js",
       // publicPath:'./test' // todo 作用是会给html中所有引入的路径加上这个路径前缀？
     },
     output:{
-      filename:'boundle.js',
+      filename:'[name].boundle.js',
       // publicPath:'http://localhost:9001/' // todo 这么玩会不会有问题？
       // publicPath:'assets/img'
+    },
+    optimization:{
+      // 压缩，代码分割相关都可写在这儿
+      minimize:true, // 开启代码压缩，或去掉该配置，直接mode给 production 默认就是 minimize:true
+      splitChunks:{
+        name:false, // 依据模块名字去命名打包结果
+        // name(module, chunks, cacheGroupKey) {
+        //   console.log('module:',module);
+        //   // console.log('chunks:',chunks);
+        //   // console.log('cacheGroupKey:',cacheGroupKey);
+        //   const moduleFileName = module
+        //     .identifier()
+        //     .split('/')
+        //     .reduceRight((item) => item);
+        //   // const allChunksNames = chunks.map((item) => item.name).join('~');
+        //   return `${moduleFileName}`;
+        // },
+        miniSize:10000, // 文件小于这个大小的公共模块，就不单独打包（减少http请求）,开发模式默认10000,生产模式默认10000
+        chunks:'all', // 所有东西都进行打包
+        cacheGroups:{
+          // 配置需要单独打包的
+          mode1:{
+            test:/mode1/
+          }
+        }
+        // cacheGroups: {
+        //   defaultVendors: {
+        //     reuseExistingChunk: true,
+        //   },
+        // },
+      },
+      runtimeChunk:true // 是否单独打包运行时代码
     },
     module:{
       rules: [
@@ -162,10 +197,26 @@ module.exports = (env)=>{
           cssImageRef:"~sprite.png" //指定打包后的css文件中引入雪碧图的路径
         }
       }),
+      new CleanWebpackPlugin(), // 清理上次打包的代码 todo 为啥没生效？
+      //-------------- webpack3 代码分割的写法如下： --------------
+      // new webpack.optimize.CommonChunksPlugin({
+      //   name:'vendor',
+      //   minChunks:'infinity'
+      // }),
+      // new webpack.optimize.CommonChunksPlugin({
+      //   name:'manifest',
+      //   minChunks:'infinity'
+      // }),
+      // new webpack.optimize.CommonChunksPlugin({
+      //   name:'app',
+      //   minChunks:2
+      // })
+      // --------------  webpack3 代码分割的写法如上： --------------
       // new extractTextCss("styles.css") // 热更新和extractTextCss不兼容，可配置disabled掉 extractTextCss todo : 这里配置报错待修复
       // new extractTextCss({
       //   filename: env.pro ? 'bundle.css':'dev.css'
       // }),
+      // new webpack.optimize.UglifyJsPlugin() // webpack3 代码压缩，tree-shaking的配置
     ]
   }
    return merge(common,env.pro ? pro : dev)

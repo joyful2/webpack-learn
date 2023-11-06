@@ -4,7 +4,7 @@
     [
       "@babel/preset-env",
       {
-        "modules": false
+        "modules": false // 不去编译模块化的东西，比如 export
       }
     ]
   ]
